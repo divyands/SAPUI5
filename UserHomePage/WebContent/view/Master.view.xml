@@ -1,0 +1,94 @@
+<mvc:View
+     controllerName="UserHomePage.WebContent.view.Master"
+     xmlns:mvc="sap.ui.core.mvc"
+     xmlns:tnt="sap.tnt"
+     xmlns:l="sap.ui.layout"
+     xmlns="sap.m"
+     xmlns:core="sap.core"
+     height="100%"
+     class="side-navigation-demo">
+     <tnt:ToolPage id="toolPage">
+     	<tnt:header>
+    		<tnt:ToolHeader>
+        		<Button icon="sap-icon://menu2" type="Transparent" press="onSideNavButtonPress" id="sideNavigationToggleButton">
+            		<layoutData>
+                		<OverflowToolbarLayoutData priority="NeverOverflow" />
+            		</layoutData>
+       			</Button>
+        		<ToolbarSpacer />
+                <Text text="User Self Service" wrapping="false">
+                 	<layoutData>
+                		<OverflowToolbarLayoutData priority="Disappear" />
+            		</layoutData>
+        		</Text>
+        		<ToolbarSpacer>
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px" />
+					</layoutData>
+				</ToolbarSpacer>
+				<Button icon="sap-icon://notification-2" text="{/nlength}" press="onMessagePopover"/>
+				<MenuButton type="Transparent" icon="sap-icon://customer">
+            		<layoutData>
+                		<OverflowToolbarLayoutData priority="NeverOverflow" />
+            		</layoutData>
+            		<menu>
+						<Menu itemSelected="onMenuAction">
+							<items>
+								<MenuItem text="Profile" icon="sap-icon://account" />
+								<MenuItem text="Logout" icon="sap-icon://log" />
+							</items>
+						</Menu>
+					</menu>
+        		</MenuButton>
+    		</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+    		<tnt:SideNavigation id="sideNavigation" itemSelect="onItemSelect">
+        		<tnt:item>
+            		<tnt:NavigationList>
+                		<tnt:NavigationListItem key="app" expanded="true" text="Applications" icon="sap-icon://sap-box"/>
+                    	<tnt:NavigationListItem key="role" text="Access Roles" icon="sap-icon://role"/>
+            		</tnt:NavigationList>
+        		</tnt:item>
+    	    </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+			<NavContainer id="pageContainer">
+				<pages>
+					<ScrollContainer id="app"
+									 horizontal="false"
+									 vertical="true"
+									 height="100%">
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" 
+									 header="Clinical Measure Analytics" press="press">
+							<tileContent>
+								<TileContent footer="SAP">
+									<content>
+										<ImageContent src="sap-icon://overview-chart"/>
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
+					</ScrollContainer>
+					<ScrollContainer id="role" horizontal="false" vertical="true">
+						<List id="ProductList" mode="MultiSelect" includeItemInSelection="false">
+							<headerToolbar>
+								<Toolbar>
+									<content>
+										<Title text="Roles" level="H2" />
+										<ToolbarSpacer />
+											<Button text="Request" type="Emphasized"/>
+									</content>
+								</Toolbar>
+							</headerToolbar>
+							<StandardListItem title="Administrator Role" 
+											  description="This admin role is used to access CMA Application"/>
+							<StandardListItem title="Manager Role" 
+											  description="This manager role is used to access CMA Application"/>
+						</List>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
